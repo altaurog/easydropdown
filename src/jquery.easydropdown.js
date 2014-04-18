@@ -224,27 +224,28 @@
 							};
 							self.query = '';
 						};
-						if(self.down){
-							if(key == 9 || key == 27){
-								self.close();
-							} else if(key == 13){
-								e.preventDefault();
-								self.select(self.focusIndex);
-								self.close();
-								return false;
-							} else if(key == 8){
-								e.preventDefault();
-								self.query = self.query.slice(0,-1);
-								self.search();
-								clearTimeout(self.resetQuery);
-								return false;
-							} else if(key != 38 && key != 40){
-								var letter = String.fromCharCode(key);
-								self.query += letter;
-								self.search();
-								clearTimeout(self.resetQuery);
-							};
+
+						if(key == 9 || key == 27){
+							self.close();
+						} else if(key == 13){
+							e.preventDefault();
+							self.select(self.focusIndex);
+							self.close();
+							return false;
+						} else if(key == 8){
+							e.preventDefault();
+							self.query = self.query.slice(0,-1);
+							self.search();
+							clearTimeout(self.resetQuery);
+							return false;
+						} else if(key != 38 && key != 40){
+							var letter = String.fromCharCode(key);
+							self.query += letter;
+							self.search();
+							self.select(self.focusIndex);
+							clearTimeout(self.resetQuery);
 						};
+
 					};
 				},
 				'keyup.easyDropDown': function(){
