@@ -378,12 +378,10 @@
 		
 		scrollToView: function(){
 			var self = this;
-			if(self.focusIndex >= self.cutOff){
-				var $focusItem = self.$items.eq(self.focusIndex),
-					scroll = ($focusItem.outerHeight() * (self.focusIndex + 1)) - self.maxHeight;
+			var $focusItem = self.$items.eq(self.focusIndex),
+				scroll = ($focusItem.outerHeight() * (self.focusIndex + 1)) - self.maxHeight;
 			
-				self.$dropDown.scrollTop(scroll);
-			};
+			self.$dropDown.scrollTop(scroll);
 		},
 		
 		notInViewport: function(scrollTop){
