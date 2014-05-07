@@ -322,6 +322,9 @@
 			if(typeof index === 'string'){
 				index = self.$select.find('option[value='+index+']').index() - 1;
 			};
+
+			if ( index >= self.options.length || index < 0 )
+				return;
 			
 			var	option = self.options[index],
 				selectIndex = self.hasLabel ? index + 1 : index;
