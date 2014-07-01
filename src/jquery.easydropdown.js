@@ -320,7 +320,7 @@
 			var self = this;
 			
 			if(typeof index === 'string'){
-				index = self.$select.find('option[value='+index+']').index() - 1;
+				index = self.$select.find('option[value='+index+']').index();
 			};
 
 			if ( index >= self.options.length || index < 0 )
