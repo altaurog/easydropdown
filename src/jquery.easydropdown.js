@@ -336,7 +336,7 @@
 				.eq(selectIndex)
 				.prop('selected',true)
 				.parent()
-				.trigger('change');
+				.trigger('change', [true,]);
 				
 			self.selected = {
 				index: index,
