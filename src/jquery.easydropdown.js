@@ -193,6 +193,15 @@
 			});
 
 			self.$select.on({
+				change: function(evt, internal) {
+					/*
+					 * As long as this is not an internal trigger,
+					 * select whatever is currently selected.
+					 * This is useful for things like auto fill occuring.
+					 */
+					if ( internal !== true )
+						self.select(self.$select.val());
+				},
 				'focus.easyDropDown': function(){
 					self.$container.addClass('focus');
 					self.inFocus = true;
