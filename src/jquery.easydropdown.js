@@ -317,17 +317,19 @@
 		},
 	
 		select: function(index){
-			var self = this;
+			var self = this,
+				selectIndex;
 			
-			if(typeof index === 'string'){
-				index = self.$select.find('option[value="'+index+'"]').index();
-			};
+			if ( typeof index === 'string' )
+				selectIndex = index = self.$select
+					.find('option[value="' + index + '"]').index();
+			else
+				selectIndex = self.hasLabel ? index + 1 : index;
 
 			if ( index >= self.options.length || index < 0 )
 				return;
 			
-			var	option = self.options[index],
-				selectIndex = self.hasLabel ? index + 1 : index;
+			var option = self.options[index];
 			self.$items.removeClass('active').eq(index).addClass('active');
 			self.$active.text(option.title);
 			self.$select
