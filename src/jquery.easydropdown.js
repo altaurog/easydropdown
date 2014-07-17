@@ -234,6 +234,16 @@
 							self.query = '';
 						};
 
+						if ( key !== 9 ) {
+							/*
+							 * Stop the browser from firing its own 'search'
+							 * event on keydown. This causes problems (ie,
+							 * things like the dropdown showing the "next" element).
+							 */
+							e.stopPropagation();
+							e.preventDefault();
+						}
+
 						if(key == 9 || key == 27){
 							self.close();
 						} else if(key == 13){
