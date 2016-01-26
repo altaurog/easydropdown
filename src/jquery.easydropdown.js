@@ -77,9 +77,11 @@
 		render: function(){
 			var	self = this,
 				touchClass = self.isTouch && self.nativeTouch ? ' touch' : '',
-				disabledClass = self.disabled ? ' disabled' : '';
-			
-			self.$container = self.$select.wrap('<div class="'+self.wrapperClass+touchClass+disabledClass+'"><span class="old"/></div>').parent().parent();
+				disabledClass = self.disabled ? ' disabled' : '',
+				srcClass = self.$select.attr('class').match(/\bdropdown-[\S]+\b/g),
+				copyClass = srcClass ? ' ' + srcClass.join(' ') + ' ' : '';
+				containerClass = self.wrapperClass+touchClass+disabledClass+copyClass;
+			self.$container = self.$select.wrap('<div class="'+containerClass+'"><span class="old"/></div>').parent().parent();
 			self.$active = $('<span class="selected">'+self.selected.title+'</span>').appendTo(self.$container);
 			self.$carat = $('<span class="carat"/>').appendTo(self.$container);
 			self.$scrollWrapper = $('<div><ul/></div>').appendTo(self.$container);
